@@ -226,7 +226,7 @@ Adds IRC v3 message tags to `PRIVMSG`, `USERSTATE`, `NOTICE` and `GLOBALUSERSTAT
 Example message:
 
 ```
-> @color=#0D4200;display-name=TWITCH_UserNaME;emotes=25:0-4,12-16/1902:6-10;subscriber=0;turbo=1;user-type=global_mod :twitch_username!twitch_username@twitch_username.tmi.twitch.tv PRIVMSG #channel :Kappa Keepo Kappa
+> @color=#0D4200;display-name=TWITCH_UserNaME;emotes=25:0-4,12-16/1902:6-10;subscriber=0;turbo=1;user-id=12826;user-type=global_mod :twitch_username!twitch_username@twitch_username.tmi.twitch.tv PRIVMSG #channel :Kappa Keepo Kappa
 ```
 
 - `color` is a hexadecimal RGB color code
@@ -237,7 +237,10 @@ Example message:
   - `emote_id:first_index-last_index,another_first-another_last/another_emote_id:first_index-last_index`
   - `emote_id` is the number to use in this URL: `http://static-cdn.jtvnw.net/emoticons/v1/:emote_id/:size` (size is 1.0, 2.0 or 3.0)
   - Emote indexes are simply character indexes. `\001ACTION ` does *not* count and indexing starts from the first character that is part of the user's "actual message". In the example message, the first Kappa (emote id 25) is from character 0 (K) to character 4 (a), and the other Kappa is from 12 to 16.
-- `subscriber`and `turbo` are either 0 or 1 depending on whether the user has sub or turbo badge or not.
+- `subscriber` is either 0 or 1 depending on whether the user has a subscriber badge or not.
+- `turbo` is either 0 or 1 depending on whether the user has a turbo badge or not.
+- `user-id` is the user's Twitch ID.
+  - This is the same user ID returned by the REST API.
 - `user-type` is either *empty*, `mod`, `global_mod`, `admin` or `staff`.
   - The broadcaster can have any of these, including empty.
 
